@@ -1,0 +1,53 @@
+import math
+
+def is_number(n):
+    try:
+        float(n)    # Type - casting the string to ‘float‘.
+                    # If string is not a valid ‘float‘, it ’ll raise ‘ValueError ‘ exception
+    except ValueError:
+        return False
+    return True
+
+def sigmoid(x):
+    result = 1 / (1 + math.exp(-x))
+
+    return result
+
+def relu(x):
+    if x <= 0:
+        return 0
+    else: return x
+
+def elu(x, alpha = 0.001):
+    if x <= 0:
+        return alpha * (math.exp(-x) - 1)
+    else: return x
+
+
+def cal_activation_function(x, act_name):
+    
+    # This function will take the input x and activation function name from user
+    # If x is not a number, program will be terminated 
+    # If user enter an activation function name beside sigmoid, relu and elu, program will send message and terminate
+    
+    if (not is_number(x)):
+        print('x must be a number')
+        return None
+    
+    if act_name == 'sigmoid':
+        print(f"sigmoid: f({x}) = {sigmoid(x)}")
+        return sigmoid(x)
+    elif act_name == 'relu':
+        print(f"relu: f({x}) = {relu(x)}")
+        return relu(x)
+    elif act_name == 'elu':
+        print(f"elu: f({x}) = {elu(x)}")
+        return elu(x)
+    else:
+        print(f'{act_name} is not supported.')
+        return None
+
+assert is_number (3) == 1.0
+print ( is_number (1) )
+assert cal_activation_function ( x = 1 , act_name ='relu') == 1
+print (round ( cal_activation_function (x = 3 , act_name ='sigmoid') , 2))
