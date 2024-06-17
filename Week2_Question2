@@ -1,0 +1,12 @@
+def count_char(word):
+    char_dict= {}
+
+    for character in word:
+        if character in char_dict:
+            char_dict[character] += 1
+        else:
+            char_dict[character] = 1
+    return char_dict
+
+assert count_char("Baby") == {'B': 1, 'a': 1, 'b': 1, 'y': 1}
+print(count_char('smiles'))
