@@ -1,0 +1,19 @@
+def word_count(file_path):
+    with open(file_path, 'r') as f:
+        text = f.read()
+
+    text = text.lower()
+    words = text.split()
+
+    counter = {}
+    for word in words:
+        if word in counter:
+            counter[word] += 1
+        else:
+            counter[word] = 1
+    return counter
+file_path = r'C:\Users\minht\OneDrive\AIO2024\Module 1\Week 2\P1_data.txt'
+result = word_count(file_path)
+assert result['who'] == 3
+print(result)
+
